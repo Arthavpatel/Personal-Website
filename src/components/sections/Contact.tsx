@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Mail, Linkedin, Github, FileText } from 'lucide-react';
+import { Mail, Linkedin, Github, FileText, Twitter } from 'lucide-react';
 
 const Contact = () => {
   const ref = useRef(null);
@@ -24,6 +24,12 @@ const Contact = () => {
       label: 'GitHub',
       value: 'github.com/Arthavpatel',
       href: 'https://github.com/Arthavpatel',
+    },
+    {
+      icon: Twitter,
+      label: 'Twitter',
+      value: 'x.com/P_arthav',
+      href: 'https://x.com/P_arthav',
     },
   ];
 
