@@ -100,7 +100,7 @@ const Contact = () => {
             Built with curiosity and care by Arthav Patel
           </p>
           <p className="text-garage-text-secondary text-xs mt-2">
-            © 2025 — A journey in progress
+            © 2026 — A journey in progress
           </p>
         </motion.footer>
       </div>
