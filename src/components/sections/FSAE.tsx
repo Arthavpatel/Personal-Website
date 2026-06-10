@@ -1,23 +1,36 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Users, Wrench, TrendingUp } from 'lucide-react';
+import { Cpu, Activity, GitBranch } from 'lucide-react';
 
 const experiences = [
   {
-    icon: Users,
-    title: 'Learning Within a Team',
-    description: 'Formula SAE taught me that engineering happens in conversation. The best solutions emerge when different perspectives meet—design, dynamics, and data working together.',
+    icon: Cpu,
+    title: 'Grounded Low Voltage',
+    description:
+      'I work on the systems that keep the car safe and talking to itself: VCU integration, CAN bus communication, and fault testing. Safety-critical work where every failure mode has to be found before the driver does.',
   },
   {
-    icon: Wrench,
-    title: 'Understanding Systems',
-    description: 'Building a race car from scratch revealed how every component connects. Strategy doesn\'t exist in isolation—it lives within the constraints of the machine and the team.',
+    icon: Activity,
+    title: 'Vehicle Dynamics',
+    description:
+      'On the dynamics side, I work on suspension simulation — modelling how the car behaves before a single part is machined. It is where my data science coursework meets actual vehicle physics.',
   },
   {
-    icon: TrendingUp,
-    title: 'Growing in Complexity',
-    description: 'Each competition brought new problems. Each problem required clearer thinking. I learned to work under pressure, adapt quickly, and trust the process.',
+    icon: GitBranch,
+    title: 'Data & Telemetry',
+    description:
+      'I am building telemetry tooling for the team, turning raw CAN data into live insight the team can act on. The same questions an F1 pit wall asks, scaled to a student garage.',
   },
+];
+
+/**
+ * Photo gallery for the FSAE section.
+ * Drop photos into public/images/fsae/ and add entries like:
+ *   { src: '/images/fsae/vcu-bench-test.jpg', caption: 'VCU bench testing, fall 2025' }
+ * The gallery renders only when this array has entries.
+ */
+const galleryImages: { src: string; caption: string }[] = [
+  // TODO(Arthav): add photos here once uploaded to public/images/fsae/
 ];
 
 const FSAE = () => {
@@ -34,14 +47,18 @@ const FSAE = () => {
           className="mb-16 max-w-3xl"
         >
           <h2 className="text-4xl md:text-5xl font-light text-garage-text mb-6">
-            Formula SAE - Team Phantom
+            Formula SAE — Team Phantom
           </h2>
           <p className="text-garage-text-secondary text-lg leading-relaxed mb-4">
-            This was the first time motorsport stopped being an idea and started feeling real.
+            This is where motorsport stopped being an idea and started being a car.
           </p>
           <p className="text-garage-text leading-relaxed">
-          Formula SAE gave me a sense of what the paddock might actually feel like the pressure of deadlines, the complexity of systems, and the need for constant communication.
-          It was messy, challenging, and honestly, exactly what I needed.
+            I joined Team Phantom with no defined data science role — there wasn't one. So I built it,
+            teaching myself the hardware and physics as I went. Today I work across two sides of the car:
+            the safety-critical low-voltage systems that keep it alive, and the simulation work that
+            predicts how it will behave. The pressure of deadlines, the complexity of interconnected
+            systems, the constant communication — it is the closest thing to the paddock I have found,
+            and exactly what I needed.
           </p>
         </motion.div>
 
@@ -60,12 +77,35 @@ const FSAE = () => {
                 {exp.title}
               </h3>
 
-              <p className="text-garage-text-secondary text-sm leading-relaxed">
+              <p className="text-sm text-garage-text-secondary leading-relaxed">
                 {exp.description}
               </p>
             </motion.div>
           ))}
         </div>
+
+        {galleryImages.length > 0 && (
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="mt-12 grid grid-cols-2 md:grid-cols-3 gap-4"
+          >
+            {galleryImages.map((img, index) => (
+              <figure key={index} className="group">
+                <img
+                  src={img.src}
+                  alt={img.caption}
+                  loading="lazy"
+                  className="w-full aspect-[4/3] object-cover border border-garage-border group-hover:border-garage-olive transition-colors"
+                />
+                <figcaption className="text-xs text-garage-text-secondary mt-2">
+                  {img.caption}
+                </figcaption>
+              </figure>
+            ))}
+          </motion.div>
+        )}
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}

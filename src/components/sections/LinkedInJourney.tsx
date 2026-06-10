@@ -8,8 +8,18 @@ interface Post {
   excerpt: string;
   insight: string;
   category: string;
+  /**
+   * Optional photo for this milestone.
+   * Drop the file in public/images/journey/ and reference it as
+   * image: '/images/journey/your-photo.jpg'
+   */
+  image?: string;
+  imageAlt?: string;
 }
 
+// NOTE(Arthav): dates on the post-2024 entries are approximate — correct them
+// before pushing, and add `image` paths once you drop photos into
+// public/images/journey/.
 const posts: Post[] = [
   {
     date: 'June 2023',
@@ -38,6 +48,41 @@ const posts: Post[] = [
     excerpt: 'Progressing to a second interview with Visa Cash App Racing Bulls gave me a clearer picture of how competitive Formula 1 opportunities really are...',
     insight: 'Reaching the second interview was validating, but not securing the role was just as important. It showed me where I still need to grow, what Formula 1 expects, and why continuing to build and learn matters more than any single outcome.',
     category: 'Reflection',
+  },
+  {
+    date: 'Early 2025',
+    title: 'From Simulating Cars to Building One',
+    excerpt: 'Joining Team Phantom’s Grounded Low Voltage team meant working on the systems that keep a real race car safe: the VCU, CAN communication, and fault testing...',
+    insight: 'Simulation forgives mistakes. Hardware does not. Working on safety-critical low-voltage systems taught me a different kind of discipline — every assumption has to be tested, every failure mode considered, because someone will actually drive this car. It is the closest thing to motorsport engineering I have done, and it changed how I write code for my own projects too.',
+    category: 'Engineering',
+  },
+  {
+    date: 'Mid 2025',
+    title: 'Two Sides of the Same Car',
+    excerpt: 'Alongside the low-voltage work, I joined the Vehicle Dynamics group to work on suspension simulation — seeing the car from the physics side as well as the systems side...',
+    insight: 'Suspension simulation and embedded systems feel like different worlds, but they answer the same question: what is the car actually doing, and how do we know? Holding both perspectives at once is exactly what drew me to race engineering in the first place.',
+    category: 'Engineering',
+  },
+  {
+    date: 'Late 2025',
+    title: 'The Day I Broke My Own Repository',
+    excerpt: 'A careless commit of gigabytes of cached telemetry data left my Monte Carlo simulator repository in a tangled, barely usable state. Fixing it took an entire evening of git archaeology...',
+    insight: 'I could have deleted the repo and started over. Instead I learned git filter-repo, rewrote the history properly, and came out the other side actually understanding version control instead of just using it. The mistakes you fix properly teach more than the work that goes smoothly — and I would rather show that than pretend it never happened.',
+    category: 'Reflection',
+  },
+  {
+    date: 'Early 2026',
+    title: 'Building the Application Engine',
+    excerpt: 'With the 2027/28 placement cycle approaching, I rebuilt everything from the ground up: CV, GitHub portfolio, a tracker covering thirteen teams, and a month-by-month roadmap...',
+    insight: 'Treating the application process itself like an engineering project changed how it felt. Less anxiety, more iteration. Every team gets a tailored case for why I fit, backed by work they can actually open and read — not promises about what I could do, but evidence of what I have done.',
+    category: 'Growth',
+  },
+  {
+    date: 'June 2026',
+    title: 'Reading the New Generation',
+    excerpt: 'The 2026 regulations changed what the cars are. Analysing Monaco FP1 telemetry — Norris against Hamilton — became my way of understanding the new power units and energy deployment for myself...',
+    insight: 'It is one thing to read about the 2026 power unit architecture, and another to see MGU-K deployment strategies play out corner by corner in real telemetry. The sport I am working toward is changing, and that is exactly why I want to be in it — the questions never stop being new. Next stop: the 2027/28 placement cycle.',
+    category: 'Journey',
   },
 ];
 
@@ -117,6 +162,14 @@ const LinkedInJourney = () => {
                     className="overflow-hidden"
                   >
                     <div className="px-6 pb-6 border-t border-garage-border pt-4">
+                      {post.image && (
+                        <img
+                          src={post.image}
+                          alt={post.imageAlt ?? post.title}
+                          loading="lazy"
+                          className="w-full max-h-80 object-cover border border-garage-border mb-4"
+                        />
+                      )}
                       <p className="text-sm font-medium text-garage-olive mb-2">
                         What I Learned
                       </p>

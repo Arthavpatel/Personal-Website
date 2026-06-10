@@ -10,8 +10,8 @@ const Contact = () => {
     {
       icon: Mail,
       label: 'Email',
-      value: 'arthavpatel5433gmail.com',
-      href: 'mailto:arthavpatel5433gmail.com',
+      value: 'arthavpatel5433@gmail.com',
+      href: 'mailto:arthavpatel5433@gmail.com',
     },
     {
       icon: Linkedin,
@@ -86,7 +86,7 @@ const Contact = () => {
             className="inline-flex items-center gap-2 text-garage-text-secondary hover:text-garage-text transition-colors group"
           >
             <FileText className="w-4 h-4 group-hover:text-garage-gold transition-colors" />
-            <span className="text-sm">Down load Resume</span>
+            <span className="text-sm">Download Resume</span>
           </a>
         </motion.div>
 

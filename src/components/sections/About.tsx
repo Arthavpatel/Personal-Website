@@ -22,7 +22,7 @@ const About = () => {
           className="pl-12 space-y-8"
         >
           <h2 className="text-4xl md:text-5xl font-light text-garage-text mb-12">
-            The Journey
+            Where It Started
           </h2>
 
           <div className="space-y-6 text-garage-text-secondary text-lg leading-relaxed">
@@ -50,8 +50,8 @@ const About = () => {
           </p>
 
             <p className="text-garage-text pt-4">
-              This journey isn't about arriving. It's about becoming someone who belongs in the Formula 1, 
-              not because I wanted fame, but because I learned to think clearly, work deeply, and ask better questions.
+              This journey isn't about arriving. It's about becoming someone who belongs in Formula 1,
+              not because I want recognition, but because I learned to think clearly, work deeply, and ask better questions.
             </p>
 
             <p className="text-garage-gold italic">

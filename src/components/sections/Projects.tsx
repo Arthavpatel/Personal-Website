@@ -12,28 +12,39 @@ interface Project {
 
 const projects: Project[] = [
   {
-    title: 'F1 Race Strategy Simulation - Monte Carlo',
+    title: 'F1 Race Strategy Simulation — Monte Carlo',
     question: 'To identify the optimal two-stop race strategy under variable conditions and stochastic events.',
     learned: 'Through this simulation, I saw how even small factors can meaningfully influence strategic decisions. The model suggested that a Medium → Hard → Soft sequence produced the lowest average race time, with an improvement of approximately 6.2 seconds.',
-    tags: ['Python', 'Matlab', 'Numpy', 'Pandas', 'FastF1'],
+    tags: ['Python', 'MATLAB', 'NumPy', 'Pandas', 'FastF1'],
+    link: 'https://github.com/Arthavpatel/monte-carlo-f1-strategy',
   },
   {
-    title: 'F1 Tyre-Limited lap Time & Strategy Simulation',
+    title: 'F1 Tyre-Limited Lap Time & Strategy Simulation',
     question: 'To address the challenge of predicting lap time evolution across stints by modelling tyre degradation, fuel burn, and driver input.',
     learned: 'Through this project, I explored how lap time can be predicted using driver telemetry and processed race data. The resulting model achieved an accuracy of approximately ±0.09 seconds per lap under the tested conditions.',
-    tags: ['Python', 'Pandas', 'Numpy', 'Sckit-Learn', 'FastF1', 'Matlab'],
+    tags: ['Python', 'Pandas', 'NumPy', 'scikit-learn', 'FastF1', 'MATLAB'],
+    link: 'https://github.com/Arthavpatel/f1-tire-fuel-laptime-model',
   },
   {
-    title: 'lapInsight - AI-Driven Lap Analysis',
-    question: 'The challenge of capturing missing performance features in qualifying lap analysis by integrating telemetry data with OpenAI',
+    title: 'LapInsight — AI-Driven Lap Analysis',
+    question: 'The challenge of capturing missing performance features in qualifying lap analysis by integrating telemetry data with AI.',
     learned: 'Before this project, I assumed I was capturing most of the important details when analysing telemetry. While building the model, I realised how easily human judgement can miss small but consistent patterns, and how data-driven approaches can surface those patterns far more reliably.',
     tags: ['Machine Learning', 'Python', 'FastF1', 'OpenF1'],
+    // TODO(Arthav): add repo link when LapInsight is public
   },
   {
-    title: 'F1 Spanish Grand Prix Data Driven Review',
+    title: 'FSAE Telemetry Dashboard — Team Phantom',
+    question: 'How do you give a race team live visibility into a car they are still building? I set out to turn raw CAN data from our Grounded Low Voltage work into something the team could actually read and act on.',
+    learned: 'Working with real vehicle data is nothing like working with a clean dataset. Sensors drop out, messages arrive out of order, and a dashboard is only useful if it stays honest about what it does not know. Building for the team taught me to design for the person under pressure, not for the demo.',
+    tags: ['Python', 'CAN', 'FastAPI', 'Telemetry'],
+    // TODO(Arthav): verify wording + add repo link if/when public
+  },
+  {
+    title: 'F1 Spanish Grand Prix — Data-Driven Review',
     question: 'This was my first telemetry-focused project, and I had many questions about interpreting telemetry plots and driving styles. Working through the project helped clarify those questions.',
     learned: 'This project helped me understand the fundamentals of telemetry plots and driving styles, while also sparking new ideas for what I want to explore next. It was my first step into working with telemetry and simulation.',
-    tags: [ 'Python', 'FastF1', 'Matlab', 'Qmd'],
+    tags: ['Python', 'FastF1', 'MATLAB', 'Qmd'],
+    link: 'https://github.com/Arthavpatel/F1-Spanish-Grand-Prix-2024-The-Data-Driven-Review',
   },
 ];
 
@@ -67,7 +78,13 @@ const Projects = () => {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               className="group relative"
             >
-              <div className="relative bg-garage-surface border border-garage-border p-8 hover:bg-garage-surface-hover transition-all duration-300 hover:border-garage-olive overflow-hidden">
+              <a
+                href={project.link}
+                target={project.link ? '_blank' : undefined}
+                rel={project.link ? 'noopener noreferrer' : undefined}
+                onClick={project.link ? undefined : (e) => e.preventDefault()}
+                className={`block relative bg-garage-surface border border-garage-border p-8 hover:bg-garage-surface-hover transition-all duration-300 hover:border-garage-olive overflow-hidden ${project.link ? 'cursor-pointer' : 'cursor-default'}`}
+              >
                 <motion.div
                   className="absolute top-0 left-0 right-0 h-px bg-garage-gold"
                   initial={{ scaleX: 0 }}
@@ -117,7 +134,7 @@ const Projects = () => {
                     ))}
                   </div>
                 </div>
-              </div>
+              </a>
             </motion.div>
           ))}
         </div>
